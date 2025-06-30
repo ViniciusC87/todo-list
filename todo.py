@@ -30,10 +30,10 @@ def listar_tarefas(tarefas):
         print("Nenhuma tarefa na lista. Adicione uma!")
     else:
         for i, tarefa in enumerate(tarefas):
+            print("-" * 40)  # Linha separadora entre tarefas
             status = "✅" if tarefa["concluida"] else "◻️"
             prioridade = tarefa.get("prioridade", "N/A")
             print(f"{i + 1}. {status} {tarefa['descricao']} [Prioridade: {prioridade}]")
-    print("--------------------------")
 
 def marcar_como_concluida(tarefas, indice):
     """Marca uma tarefa como concluída com base no seu índice na lista."""
