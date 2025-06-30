@@ -1,3 +1,5 @@
+# Essa função adiciona uma nova tarefa com descrição, status e prioridade.
+Logo antes da linha prioridade
 def adicionar_tarefa(tarefas, descricao):
     """
     Adiciona uma nova tarefa à lista.
@@ -5,11 +7,12 @@ def adicionar_tarefa(tarefas, descricao):
     """
     if not descricao.strip():
         print("\n❌ A descrição da tarefa não pode ser vazia.")
+        # Solicita prioridade ao usuário e valida entrada
         prioridade = input("Digite a prioridade da tarefa (Alta, Média, Baixa): ").capitalize()
         if prioridade not in ["Alta", "Média", "Baixa"]:
             print("⚠️ Prioridade inválida. Atribuindo prioridade 'Baixa'.")
             prioridade = "Baixa"
-        
+        # Cria o dicionário da nova tarefa com os campos necessários
         nova_tarefa = {
             "descricao": descricao,
             "concluida": False,
