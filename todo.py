@@ -10,7 +10,7 @@ def adicionar_tarefa(tarefas, descricao):
         # Solicita prioridade ao usuário e valida entrada
         prioridade = input("Digite a prioridade da tarefa (Alta, Média, Baixa): ").capitalize()
         if prioridade not in ["Alta", "Média", "Baixa"]:
-            print("⚠️ Prioridade inválida. Atribuindo prioridade 'Baixa'.")
+            print(f"⚠️ Prioridade '{prioridade}' inválida. Atribuindo prioridade padrão 'Baixa'.")
             prioridade = "Baixa"
         # Cria o dicionário da nova tarefa com os campos necessários
         nova_tarefa = {
