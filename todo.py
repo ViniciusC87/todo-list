@@ -1,18 +1,14 @@
-# Essa função adiciona uma nova tarefa com descrição, status e prioridade.
-Logo antes da linha prioridade
 def adicionar_tarefa(tarefas, descricao):
     """
     Adiciona uma nova tarefa à lista.
     Uma tarefa é um dicionário com 'descricao', 'concluida' e 'prioridade'.
     """
-    if not descricao.strip():
-        print("\n❌ A descrição da tarefa não pode ser vazia.")
-        # Solicita prioridade ao usuário e valida entrada
+    if descricao.strip():
         prioridade = input("Digite a prioridade da tarefa (Alta, Média, Baixa): ").capitalize()
         if prioridade not in ["Alta", "Média", "Baixa"]:
             print(f"⚠️ Prioridade '{prioridade}' inválida. Atribuindo prioridade padrão 'Baixa'.")
             prioridade = "Baixa"
-        # Cria o dicionário da nova tarefa com os campos necessários
+
         nova_tarefa = {
             "descricao": descricao,
             "concluida": False,
@@ -21,7 +17,7 @@ def adicionar_tarefa(tarefas, descricao):
         tarefas.append(nova_tarefa)
         print(f"\n✅ Tarefa '{descricao}' com prioridade '{prioridade}' adicionada com sucesso!")
     else:
-        print("\n❌ A descrição da tarefa não pode ser vazia.") 
+        print("\n❌ A descrição da tarefa não pode ser vazia.")
 
 def listar_tarefas(tarefas):
     """Lista todas as tarefas, mostrando o status e a prioridade."""
@@ -30,14 +26,13 @@ def listar_tarefas(tarefas):
         print("Nenhuma tarefa na lista. Adicione uma!")
     else:
         for i, tarefa in enumerate(tarefas):
-            print("-" * 40)  # Linha separadora entre tarefas
+            print("-" * 40)
             status = "✅" if tarefa["concluida"] else "◻️"
             prioridade = tarefa.get("prioridade", "N/A")
             print(f"{i + 1}. {status} {tarefa['descricao']} [Prioridade: {prioridade}]")
 
 def marcar_como_concluida(tarefas, indice):
-    """Marca uma tarefa como concluída com base no seu índice na lista."""
-    # O índice do usuário começa em 1, mas o da lista em 0
+    """Marca uma tarefa como concluída com base no seu índice."""
     indice_real = indice - 1
     if 0 <= indice_real < len(tarefas):
         if tarefas[indice_real]["concluida"]:
@@ -79,13 +74,11 @@ def exibir_menu():
     print("2. Listar Tarefas")
     print("3. Marcar Tarefa como Concluída")
     print("4. Remover Tarefa")
-    print("5. Editar Descrição da Tarefa")  # NOVO
+    print("5. Editar Descrição da Tarefa")
     print("0. Sair")
 
 def main():
     """Função principal que executa o loop do programa."""
-    # A lista de tarefas (nosso vetor) é criada vazia aqui.
-    # Ela existirá apenas enquanto o programa estiver em execução.
     lista_de_tarefas = []
 
     while True:
@@ -117,13 +110,12 @@ def main():
                 indice = int(input("Digite o número da tarefa que deseja editar: "))
                 editar_tarefa(lista_de_tarefas, indice)
             except ValueError:
-                print("\n❌ Entrada inválida. Por favor, digite um número.")        
+                print("\n❌ Entrada inválida. Por favor, digite um número.")
         elif escolha == '0':
             print("\nObrigado por usar o Gerenciador de Tarefas. Até mais!")
             break
         else:
             print("\n❌ Opção inválida. Por favor, tente novamente.")
 
-# Garante que a função main() só será executada quando o script for rodado diretamente
 if __name__ == "__main__":
     main()
